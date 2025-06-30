@@ -40,11 +40,11 @@ dotenv.config();
 const app = express();
 
 // ✅ CORS sabse pehle
-// app.use(cors({
-//   origin: 'https://healthapp-h659.vercel.app',
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   credentials: true
-// }));
+app.use(cors({
+  origin: 'https://healthapp-h659.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 
 app.use(express.json());
 
