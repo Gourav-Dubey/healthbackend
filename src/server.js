@@ -53,7 +53,7 @@ connectDB();
 
 // ✅ Routes
 app.use("/api/auth", require("./routes/authRoutes"));
-app.use("/api/ai", require("./routes/aiRoutes"));
+app.use("/api/ai/suggest", require("./routes/aiRoutes"));
 
 // ✅ Server start
 const PORT = process.env.PORT || 5000;

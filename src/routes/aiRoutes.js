@@ -4,7 +4,7 @@ const axios = require("axios");
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-router.post("/suggest", async (req, res) => {
+router.post("/api/ai/suggest", async (req, res) => {
   const { mood, journal } = req.body;
 
   const prompt = `You are a mental health assistant. Based on the user's mood and journal, give 2-3 gentle suggestions to help improve their mental well-being.
