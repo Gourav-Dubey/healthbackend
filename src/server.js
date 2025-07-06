@@ -37,6 +37,7 @@ connectDB();
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/ai", require("./routes/aiRoutes"));
 app.use("/api", journalRoutes);
+app.use("/api/mood", require("./routes/moodRoutes"));
 
 // ✅ 5. Not Found Route
 app.use((req, res, next) => {
@@ -56,7 +57,6 @@ app.listen(PORT, () => {
 });   
 
 
-
 // const express = require("express");
 // const cors = require("cors");
 // const dotenv = require("dotenv");
@@ -65,13 +65,13 @@ app.listen(PORT, () => {
 // dotenv.config();
 // const app = express();
 
-// // ✅ 1. CORS Configuration
+// // ✅ 1. CORS Setup (Dynamic)
 // const allowedOrigins = [
-//   "http://localhost:5173",
-//   "https://healthapp-h659.vercel.app"
+//   "http://localhost:5173", // local dev
+//   "https://healthapp-h659.vercel.app", // deployed frontend (Vercel)
 // ];
 
-// const corsOptions = {
+// app.use(cors({
 //   origin: function (origin, callback) {
 //     if (!origin || allowedOrigins.includes(origin)) {
 //       callback(null, true);
@@ -80,27 +80,22 @@ app.listen(PORT, () => {
 //     }
 //   },
 //   credentials: true,
-//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-// };
-
-// app.use(cors(corsOptions));
-
-// // ✅ 1.5. Preflight requests
-// app.options("*", cors(corsOptions));
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+// }));
 
 // // ✅ 2. Middleware
-// app.use(express.json());
+// app.use(express.json()); // For parsing JSON
 
-// // ✅ 3. Connect to MongoDB
+// // ✅ 3. Connect to DB
 // connectDB();
 
-// // ✅ 4. Routes
+// // ✅ 4. API Routes
 // app.use("/api/auth", require("./routes/authRoutes"));
 // app.use("/api/ai", require("./routes/aiRoutes"));
-// // Add more routes here if needed
-// // app.use("/api/journal", require("./routes/journalRoutes"));
+// app.use("/api", require("./routes/journalRoutes"));
+// app.use("/api/mood", require("./routes/moodRoutes")); // 💥 Mood route added here
 
-// // ✅ 5. 404 Not Found Handler
+// // ✅ 5. Not Found Route
 // app.use((req, res, next) => {
 //   res.status(404).json({ msg: "Route not found" });
 // });
@@ -116,3 +111,10 @@ app.listen(PORT, () => {
 // app.listen(PORT, () => {
 //   console.log(`🚀 Server running on port ${PORT}`);
 // });
+
+
+
+
+
+
+
