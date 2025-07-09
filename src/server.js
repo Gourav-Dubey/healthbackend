@@ -28,8 +28,17 @@ const journalRoutes = require("./routes/journalRoutes");
 const meditationRoutes = require("./routes/meditationRoutes");
 
 
+
+
 // ✅ 2. Middleware
 app.use(express.json()); // For parsing JSON
+
+
+app.get("/api/ping", (req, res) => {
+  console.log("🟢 Ping by UptimeRobot:", new Date().toLocaleString());
+  res.status(200).json({ message: "pong" });
+});
+
 
 // ✅ 3. Connect to DB
 connectDB();
@@ -42,6 +51,11 @@ app.use("/api/mood", require("./routes/moodRoutes"));
 
 // ✅ ✅ ✅ Add meditation route here
 app.use("/api/meditation", meditationRoutes);
+
+
+
+
+
 
 // ✅ 5. Not Found Route
 app.use((req, res, next) => {
