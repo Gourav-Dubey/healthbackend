@@ -35,7 +35,7 @@ app.use(express.json()); // For parsing JSON
 
 
 app.get("/api/ping", (req, res) => {
-  console.log("🟢 Ping by UptimeRobot:", new Date().toLocaleString());
+  // console.log("🟢 Ping by UptimeRobot:", new Date().toLocaleString());
   res.status(200).json({ message: "pong" });
 });
 
